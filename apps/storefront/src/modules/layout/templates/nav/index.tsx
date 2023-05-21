@@ -1,6 +1,7 @@
 import { useMobileMenu } from "@lib/context/mobile-menu-context"
 import Hamburger from "@modules/common/components/hamburger"
 import CartDropdown from "@modules/layout/components/cart-dropdown"
+import CartButton from "@custommodules/common/components/cart-button"
 import DropdownMenu from "@modules/layout/components/dropdown-menu"
 import MobileMenu from "@modules/mobile-menu/templates"
 import DesktopSearchModal from "@modules/search/templates/desktop-search-modal"
@@ -84,6 +85,7 @@ const Nav = () => {
               </Link>
             </div>
             <CartDropdown />
+            <CartButton />
           </div>
         </nav>
         <MobileMenu />

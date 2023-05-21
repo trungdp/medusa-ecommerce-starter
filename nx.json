@@ -8,5 +8,8 @@
       }
     }
   },
-  "defaultBase": "master"
+  "defaultBase": "master",
+  "plugins": [
+    "@nxrocks/nx-flutter"
+  ]
 }

@@ -12,5 +12,8 @@
   "devDependencies": {
     "nx": "16.1.1",
     "nx-cloud": "latest"
+  },
+  "dependencies": {
+    "@nxrocks/nx-flutter": "^7.0.3"
   }
 }
