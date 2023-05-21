@@ -2,7 +2,14 @@
     "projectType": "application",
     "sourceRoot": "apps/storefront/src",
     "prefix": "medusa",
+    "name": "storefront",
     "targets": {
+      "dev": {
+        "executor": "nx:run-commands",
+        "options": {
+          "command": "pnpm --filter storefront dev"
+        }
+      },
       "start": {
         "executor": "nx:run-commands",
         "options": {

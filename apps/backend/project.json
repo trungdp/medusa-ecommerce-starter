@@ -3,6 +3,18 @@
     "sourceRoot": "apps/backend/src",
     "prefix": "medusa",
     "targets": {
+      "dev": {
+        "executor": "nx:run-commands",
+        "options": {
+          "command": "pnpm --filter backend dev"
+        }
+      },
+      "seed": {
+        "executor": "nx:run-commands",
+        "options": {
+          "command": "pnpm --filter backend seed"
+        }
+      },
       "start": {
         "executor": "nx:run-commands",
         "options": {

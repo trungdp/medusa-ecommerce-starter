@@ -2,7 +2,14 @@
     "projectType": "application",
     "sourceRoot": "apps/admin/src",
     "prefix": "medusa",
+    "name": "admin",
     "targets": {
+      "dev": {
+        "executor": "nx:run-commands",
+        "options": {
+          "command": "pnpm --filter admin dev"
+        }
+      },
       "start": {
         "executor": "nx:run-commands",
         "options": {
