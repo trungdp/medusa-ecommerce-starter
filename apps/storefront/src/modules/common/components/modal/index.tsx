@@ -17,12 +17,10 @@ const Modal: React.FC<ModalProps> & {
   Footer: React.FC
 } = ({ isOpen, close, size = "medium", children }) => {
   return (
-    <Transition appear show={isOpen} 
-    as={'div'}
-    >
+    <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-[75]" onClose={close}>
         <Transition.Child
-          as={'div'}
+          as={Fragment}
           enter="ease-out duration-300"
           enterFrom="opacity-0"
           enterTo="opacity-100"
@@ -36,7 +34,7 @@ const Modal: React.FC<ModalProps> & {
         <div className="fixed inset-0 overflow-y-auto">
           <div className="flex min-h-full h-full items-center justify-center p-4 text-center">
             <Transition.Child
-              as={'div'}
+              as={Fragment}
               enter="ease-out duration-300"
               enterFrom="opacity-0 scale-95"
               enterTo="opacity-100 scale-100"

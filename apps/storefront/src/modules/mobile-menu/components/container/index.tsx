@@ -9,10 +9,10 @@ type ContainerProps = {
 const Container = ({ children }: ContainerProps) => {
   const { state, close } = useMobileMenu()
   return (
-    <Transition.Root show={state} as={"div"}>
+    <Transition.Root show={state} as={Fragment}>
       <Dialog as="div" className="fixed inset-0 flex z-50" onClose={close}>
         <Transition.Child
-          as={"div"}
+          as={Fragment}
           enter="ease-in-out duration-500"
           enterFrom="opacity-0"
           enterTo="opacity-100"
@@ -24,7 +24,7 @@ const Container = ({ children }: ContainerProps) => {
         </Transition.Child>
 
         <Transition.Child
-          as={'div'}
+          as={Fragment}
           enter="transition ease-in-out duration-500 transform"
           enterFrom="-translate-x-full"
           enterTo="translate-x-0"

@@ -1,3 +1,5 @@
+"use client"
+
 import { Listbox, Transition } from "@headlessui/react"
 import { useStore } from "@lib/context/store-context"
 import useToggleState from "@lib/hooks/use-toggle-state"
@@ -44,12 +46,12 @@ const CountrySelect = () => {
   return (
     <div onMouseEnter={open} onMouseLeave={close}>
       <Listbox
-        // onChange={handleChange}
-        // defaultValue={
-        //   countryCode
-        //     ? options?.find((o) => o.country === countryCode)
-        //     : undefined
-        // }
+        onChange={handleChange}
+        defaultValue={
+          countryCode
+            ? options?.find((o) => o.country === countryCode)
+            : undefined
+        }
       >
         <Listbox.Button className="py-1 w-full">
           <div className="text-small-regular flex items-center gap-x-2 xsmall:justify-end">
@@ -72,7 +74,7 @@ const CountrySelect = () => {
         <div className="relative w-full min-w-[316px]">
           <Transition
             show={state}
-            as={'div'}
+            as={Fragment}
             leave="transition ease-in duration-150"
             leaveFrom="opacity-100"
             leaveTo="opacity-0"

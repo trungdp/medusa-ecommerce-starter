@@ -9,23 +9,18 @@ import clsx from "clsx"
 import React, { Fragment, useMemo } from "react"
 import { Product } from "types/medusa"
 import OptionSelect from "../option-select"
+import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
 
 type MobileActionsProps = {
-  product: Product
+  product: PricedProduct
   show: boolean
 }
 
 const MobileActions: React.FC<MobileActionsProps> = ({ product, show }) => {
-  const {
-    variant,
-    addToCart,
-    options,
-    inStock,
-    updateOptions,
-  } = useProductActions()
+  const { variant, addToCart, options, inStock, updateOptions } = useProductActions()
   const { state, open, close } = useToggleState()
 
-  const price = useProductPrice({ id: product.id, variantId: variant?.id })
+  const price = useProductPrice({ id: product.id!, variantId: variant?.id })
 
   const selectedPrice = useMemo(() => {
     const { variantPrice, cheapestPrice } = price
@@ -41,7 +36,7 @@ const MobileActions: React.FC<MobileActionsProps> = ({ product, show }) => {
         })}
       >
         <Transition
-          as={"div"}
+          as={Fragment}
           show={show}
           enter="ease-in-out duration-300"
           enterFrom="opacity-0"
@@ -86,17 +81,15 @@ const MobileActions: React.FC<MobileActionsProps> = ({ product, show }) => {
                   <ChevronDown />
                 </div>
               </Button>
-              <Button onClick={addToCart}>
-                {!inStock ? "Out of stock" : "Add to cart"}
-              </Button>
+              <Button onClick={addToCart}>{!inStock ? "Out of stock" : "Add to cart"}</Button>
             </div>
           </div>
         </Transition>
       </div>
-      <Transition appear show={state} as={"div"}>
+      <Transition appear show={state} as={Fragment}>
         <Dialog as="div" className="relative z-[75]" onClose={close}>
           <Transition.Child
-            as={"div"}
+            as={Fragment}
             enter="ease-out duration-300"
             enterFrom="opacity-0"
             enterTo="opacity-100"
@@ -110,7 +103,7 @@ const MobileActions: React.FC<MobileActionsProps> = ({ product, show }) => {
           <div className="fixed bottom-0 inset-x-0">
             <div className="flex min-h-full h-full items-center justify-center text-center">
               <Transition.Child
-                as={"div"}
+                as={Fragment}
                 enter="ease-out duration-300"
                 enterFrom="opacity-0"
                 enterTo="opacity-100"
@@ -130,7 +123,7 @@ const MobileActions: React.FC<MobileActionsProps> = ({ product, show }) => {
                   <div className="bg-white px-6 py-12">
                     {product.variants.length > 1 && (
                       <div className="flex flex-col gap-y-6">
-                        {product.options.map((option) => {
+                        {(product.options || []).map((option) => {
                           return (
                             <div key={option.id}>
                               <OptionSelect
